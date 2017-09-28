@@ -29,6 +29,9 @@ public class UserServlet extends HttpServlet {
          request.setAttribute("ub", ub);
          request.getRequestDispatcher("update.jsp").forward(request, response);
 		}
+		if("update".equals(method)){
+			
+		}
 	
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

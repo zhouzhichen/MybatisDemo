@@ -12,7 +12,6 @@
 	<input type="hidden" name="method" value="update">
 	id：<input type="text" name="userId" readonly="readonly" value="${ub.userId }"><br>
 	用户名：<input type="text"  name="userName" value="${ub.userName }"><br>
-	
 	密码：<input type="text" name="userPs" value="${ub.userPs }"><br>
 	
 	<input type="submit" value="修改">

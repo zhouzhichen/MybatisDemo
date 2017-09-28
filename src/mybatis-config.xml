@@ -8,8 +8,8 @@
 		<environment id="development">
 			<transactionManager type="JDBC"></transactionManager>
 			<dataSource type="POOLED">
-				<property name="user" value="root" />
-				<property name="passowrd" value="1234" />
+				<property name="username" value="root" />
+				<property name="password" value="1234" />
 				<property name="url" value="jdbc:mysql://localhost:3306/test2" />
 				<property name="driver" value="com.mysql.jdbc.Driver" />
 			</dataSource>
@@ -17,6 +17,6 @@
 
 	</environments>
 	<mappers>
-		<mapper resource="com/rimi/userbean/UserDaoMapper.xml" />
+		<mapper resource="com/rimi/userdao/UserDaoMapper.xml" />
 	</mappers>
 </configuration>
