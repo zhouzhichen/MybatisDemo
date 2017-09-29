@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="com.rimi.userdao.UserDao">
-	<resultMap type="UserBean" id="zzc">
-		<id property="id" column="user_id" />
+<!-- 这里相当于Dao层的实现层 -->
+<mapper namespace="com.rimi.userdao.UserDao"><!-- 映射的是UserDao这个类 -->
+	<resultMap type="UserBean" id="zzc">     <!--必须是配置文件的别名  -->
+		<id property="id" column="user_id" /><!-- bean属性和表列的映射 -->
 		<result property="name" column="user_name" />
 		<result property="password" column="user_password" />
 	</resultMap>
-	<select id="getuserInfo" parameterType="UserBean" resultMap="zzc">
+	<select id="getUserInfo" parameterType="UserBean" resultMap="zzc"><!--getUserInfo为Dao层的方法名  -->
 		select * from user
 		<where><!--where可以解决where问题  -->
 
 			1=1  
-			<if test="name != null and name  != '%%'">
-				and uer_name like #{name} 
+			<if test="name != null and name  != '%%'"><!--注意模糊查询的语句方式 ,还有这里的name应该是bean的属性 -->
+				and user_name like #{name} 
 			</if>
-			<if test="password ! = null">
-				and uer_password like '%${password}%' 
+			<if test="password != null">
+				and user_password like '%${password}%' <!--注意模糊查询的语句方式 ,注意$和#的区别 !!!!! -->
 			</if>
 
 			 and 1+1=2
 		</where>
 	</select>
 
-	<select id="userinfo" resultMap="zzc">
+	<select id="userInfo" resultMap="zzc">
 		select * from user
 	</select>
 
@@ -30,11 +31,11 @@
 		select * from user
 		<!-- trim可以解决","和where还有and问题,比较全面,推荐使用 -->
 		<trim prefix="where" prefixOverrides="and">
-			<if test="name ! = null and name ! = ''">
-				and uer_name = #{name} 
+			<if test="name != null and name != ''"><!--!和=之间不能有空格  -->
+				and user_name = #{name} 
 			</if>
-			<if test="password ! = null and name ! = ''">
-				and uer_name = #{password} 
+			<if test="password != null">
+				and user_password = #{password} 
 			</if>
 		</trim>
 	</select>
@@ -44,15 +45,18 @@
 	</select>
 	<update id="updateUser" parameterType="UserBean">
 		update user
-		<set><!--set可以解决"," 的问题 -->
-			<if test="name!=null and name ! = ''">
-				user_name=#{name}
+		<set><!--set可以解决"," 的问题 但是所有,还是要加上,set自动解决-->
+			<if test="name!=null and name != ''">
+				user_name=#{name},
 			</if>
 			<if test="password!=null">
-				user_password=#{password}
+				user_password=#{password},
 			</if>
 		</set>
 		where user_id=#{id}
 	</update>
+	<delete id="deleteUser" parameterType="int">
+	delete from user where user_id = #{id} 
+	</delete>
 
 </mapper>

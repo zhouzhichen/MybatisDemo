@@ -14,7 +14,6 @@
 				<property name="driver" value="com.mysql.jdbc.Driver" />
 			</dataSource>
 		</environment>
-
 	</environments>
 	<mappers>
 		<mapper resource="com/rimi/userdao/UserDaoMapper.xml" />

@@ -16,4 +16,5 @@ public interface UserDao {
 	public boolean updateUser(UserBean ub);
 
 	public List getUserByIds(List ids);
+	public boolean deleteUser(int userId);
 }

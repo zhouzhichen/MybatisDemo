@@ -14,5 +14,7 @@ public interface UserService {
 	public UserBean getUserById(int userId);
 
 	public boolean updateUser(int userId, String userName, int userPs);
+	
+	public boolean deleteUser(int userId);
 
 }

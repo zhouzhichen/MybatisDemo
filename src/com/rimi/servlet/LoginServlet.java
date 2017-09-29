@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 		UserBean ub=usa.login(name, password);
 		
 		if(ub!=null) {
-			request.setAttribute("ub",ub);
+			request.getSession().setAttribute("ub",ub);
 			request.setAttribute("userInfo",usa.userInfo());
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		}

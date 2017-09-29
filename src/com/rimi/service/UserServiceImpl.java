@@ -58,4 +58,11 @@ public class UserServiceImpl implements UserService {
 		return ud.userInfo();
 	}
 
+	@Override
+	public boolean deleteUser(int userId) {
+		boolean ok=ud.deleteUser(userId);
+		session.commit();
+		return ok;
+	}
+
 }
